@@ -1,3 +1,4 @@
+import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Mentoria;
 
@@ -16,6 +17,8 @@ public class Main {
         curso2.setDescricao("Descrição Curso Js");
         curso2.setCargaHoraria(75);
 
+        Conteudo conteudo = new Curso();
+        Conteudo conteudo1 = new Mentoria();
 
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setTitulo("Mentoria Programação");
