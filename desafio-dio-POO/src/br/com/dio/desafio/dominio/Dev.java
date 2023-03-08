@@ -12,6 +12,7 @@ public class Dev {
 
     public void inscreverBootcamp (Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
+        bootcamp.getDevsInscritos().add(this);
     }
 
 
@@ -19,11 +20,17 @@ public class Dev {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
     if(conteudo.isPresent()) {
         this.conteudosConcluidos.add(conteudo.get());
-     }
+        this.conteudosInscritos.remove(conteudo.get());
+     }else {
+        System.err.println("Você nã esta matriculado em nenhum curso");
+    }
     }
 
-    public void calcularXp () {
-
+    public double calcularTotalXp () {
+       return this.conteudosConcluidos
+               .stream()
+               .mapToDouble(Conteudo::calcularXp)
+               .sum();
     }
 
     public String getNome() {
